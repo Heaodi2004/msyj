@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java学习 - 编程学习辅助平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .nav {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: #f5576c;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #f5576c;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #f5576c;
+        }
+
+        .section h3 {
+            color: #555;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        .section h4 {
+            color: #777;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .section ul, .section ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .code-block .keyword { color: #c678dd; }
+        .code-block .string { color: #98c379; }
+        .code-block .comment { color: #5c6370; font-style: italic; }
+        .code-block .function { color: #61afef; }
+        .code-block .number { color: #d19a66; }
+        .code-block .class { color: #e5c07b; }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .tip {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip strong {
+            color: #0c5460;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav {
+                text-align: center;
+            }
+
+            .nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>☕ Java学习指南</h1>
+        <p>面向对象编程的经典语言，跨平台、生态完善</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">🏠 首页</a>
+        <a href="c.html">📘 C语言</a>
+        <a href="python.html">🐍 Python</a>
+        <a href="frontend.html">🌐 前端</a>
+        <a href="agent.html">🤖 智能体</a>
+    </div>
+
+    <div class="container">
+        <!-- 一、Java入门基础 -->
+        <div class="section">
+            <h2>一、Java入门基础</h2>
+            
+            <h3>1. Java初识</h3>
+            <ul>
+                <li><strong>历史与特点</strong>：Sun公司诞生（1995）、跨平台（"一次编写，到处运行"）、面向对象、安全性与健壮性</li>
+                <li><strong>应用场景</strong>：后端开发（Spring生态）、Android开发、大数据（Hadoop）、桌面应用等</li>
+                <li><strong>为什么学Java</strong>：语法相对规范、生态完善、就业面广，适合零基础入门</li>
+            </ul>
+
+            <h3>2. 开发环境搭建</h3>
+            <ul>
+                <li><strong>核心工具</strong>：JDK（Java Development Kit，包含编译器javac、运行工具java）</li>
+                <li><strong>安装与配置</strong>：Windows/Linux/macOS下JDK 8/11安装步骤，环境变量（JAVA_HOME、Path）配置</li>
+                <li><strong>IDE选择</strong>：IntelliJ IDEA（推荐，社区版免费）、Eclipse</li>
+                <li><strong>第一个程序</strong>：Hello World（代码解析）</li>
+            </ul>
+
+            <h4>示例：Hello World</h4>
+            <div class="code-block">
+<span class="comment">// 公共类，类名必须与文件名一致</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">HelloWorld</span> {
+    <span class="comment">// main方法是程序的入口点</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="comment">// 输出文本到控制台</span>
+        <span class="class">System</span>.out.println(<span class="string">"Hello, World!"</span>);
+    }
+}
+            </div>
+        </div>
+
+        <!-- 二、核心语法 -->
+        <div class="section">
+            <h2>二、核心语法：变量、运算与控制流</h2>
+            
+            <h3>1. 变量与数据类型</h3>
+            <ul>
+                <li><strong>基本数据类型（8种）</strong>：
+                    <ul>
+                        <li>整数：<code>byte</code>（1字节）、<code>short</code>（2）、<code>int</code>（4，默认）、<code>long</code>（8，需加L后缀）</li>
+                        <li>浮点数：<code>float</code>（4，需加F后缀）、<code>double</code>（8，默认）</li>
+                        <li>字符：<code>char</code>（2字节，单引号包裹：<code>'A'</code>、<code>'中'</code>）</li>
+                        <li>布尔：<code>boolean</code>（仅<code>true</code>/<code>false</code>）</li>
+                    </ul>
+                </li>
+                <li><strong>引用数据类型</strong>：类（<code>String</code>）、数组、接口等（默认值为<code>null</code>）</li>
+                <li><strong>常量</strong>：<code>final double PI = 3.14;</code>（不可修改）</li>
+                <li><strong>类型转换</strong>：自动转换（小范围→大范围）、强制转换（<code>(int)3.14</code>，可能丢失精度）</li>
+            </ul>
+
+            <h4>示例：变量与数据类型</h4>
+            <div class="code-block">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">DataTypeExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="comment">// 整数类型</span>
+        <span class="keyword">byte</span> b = <span class="number">127</span>;
+        <span class="keyword">short</span> s = <span class="number">32767</span>;
+        <span class="keyword">int</span> age = <span class="number">18</span>;
+        <span class="keyword">long</span> bigNum = <span class="number">1234567890L</span>;  <span class="comment">// 需加L后缀</span>
+        
+        <span class="comment">// 浮点数类型</span>
+        <span class="keyword">float</span> price = <span class="number">99.99F</span>;  <span class="comment">// 需加F后缀</span>
+        <span class="keyword">double</span> pi = <span class="number">3.1415926</span>;
+        
+        <span class="comment">// 字符类型</span>
+        <span class="keyword">char</span> grade = <span class="string">'A'</span>;
+        <span class="keyword">char</span> chinese = <span class="string">'中'</span>;
+        
+        <span class="comment">// 布尔类型</span>
+        <span class="keyword">boolean</span> isStudent = <span class="keyword">true</span>;
+        
+        <span class="comment">// 引用类型</span>
+        <span class="class">String</span> name = <span class="string">"Java"</span>;
+        
+        <span class="comment">// 常量</span>
+        <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.14</span>;
+        
+        <span class="class">System</span>.out.println(<span class="string">"年龄: "</span> + age + <span class="string">", 成绩: "</span> + grade);
+        <span class="class">System</span>.out.println(<span class="string">"姓名: "</span> + name);
+        
+        <span class="comment">// 类型转换</span>
+        <span class="keyword">int</span> result = (<span class="keyword">int</span>)pi;  <span class="comment">// 强制转换为整数</span>
+        <span class="class">System</span>.out.println(<span class="string">"pi的整数部分: "</span> + result);
+    }
+}
+            </div>
+
+            <h3>2. 运算符与表达式</h3>
+            <ul>
+                <li><strong>算术运算符</strong>：<code>+ - * / %</code>（注意<code>/</code>：整数相除取整，<code>5/2=2</code>；<code>+</code>可拼接字符串）</li>
+                <li><strong>比较运算符</strong>：<code>&gt; &lt; &gt;= &lt;= == !=</code>（引用类型<code>==</code>比较地址，<code>equals()</code>比较内容）</li>
+                <li><strong>逻辑运算符</strong>：<code>&&</code>（短路与）、<code>||</code>（短路或）、<code>!</code>（非）</li>
+                <li><strong>三元运算符</strong>：<code>int max = (a &gt; b) ? a : b;</code></li>
+            </ul>
+
+            <h3>3. 控制流语句</h3>
+            <ul>
+                <li><strong>分支结构</strong>：<code>if-else</code>、<code>switch</code>（支持<code>int</code>、<code>char</code>、<code>String</code>、枚举）</li>
+                <li><strong>循环结构</strong>：<code>for</code>、<code>while</code>、<code>do-while</code>、增强for循环（foreach）</li>
+                <li><strong>循环控制</strong>：<code>break</code>（跳出循环）、<code>continue</code>（跳过本次循环）</li>
+            </ul>
+
+            <h4>示例：控制流语句</h4>
+            <div class="code-block">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">ControlFlow</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="comment">// if-else 分支</span>
+        <span class="keyword">int</span> score = <span class="number">85</span>;
+        <span class="keyword">if</span> (score &gt;= <span class="number">90</span>) {
+            <span class="class">System</span>.out.println(<span class="string">"优秀"</span>);
+        } <span class="keyword">else</span> <span class="keyword">if</span> (score &gt;= <span class="number">60</span>) {
+            <span class="class">System</span>.out.println(<span class="string">"及格"</span>);
+        } <span class="keyword">else</span> {
+            <span class="class">System</span>.out.println(<span class="string">"不及格"</span>);
+        }
+        
+        <span class="comment">// switch-case</span>
+        <span class="keyword">int</span> month = <span class="number">3</span>;
+        <span class="keyword">switch</span> (month) {
+            <span class="keyword">case</span> <span class="number">1</span>:
+            <span class="keyword">case</span> <span class="number">2</span>:
+            <span class="keyword">case</span> <span class="number">3</span>:
+                <span class="class">System</span>.out.println(<span class="string">"春季"</span>);
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> <span class="number">4</span>:
+            <span class="keyword">case</span> <span class="number">5</span>:
+            <span class="keyword">case</span> <span class="number">6</span>:
+                <span class="class">System</span>.out.println(<span class="string">"夏季"</span>);
+                <span class="keyword">break</span>;
+            <span class="keyword">default</span>:
+                <span class="class">System</span>.out.println(<span class="string">"其他季节"</span>);
+        }
+        
+        <span class="comment">// for循环：计算1-100求和</span>
+        <span class="keyword">int</span> sum = <span class="number">0</span>;
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) {
+            sum += i;
+        }
+        <span class="class">System</span>.out.println(<span class="string">"1-100的和: "</span> + sum);
+        
+        <span class="comment">// 增强for循环（foreach）</span>
+        <span class="keyword">int</span>[] arr = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};
+        <span class="keyword">for</span> (<span class="keyword">int</span> num : arr) {
+            <span class="class">System</span>.out.print(num + <span class="string">" "</span>);
+        }
+        <span class="class">System</span>.out.println();
+    }
+}
+            </div>
+        </div>
+
+        <!-- 三、面向对象编程 -->
+        <div class="section">
+            <h2>三、面向对象编程（OOP核心）</h2>
+            
+            <h3>1. 类与对象</h3>
+            <ul>
+                <li><strong>类</strong>：抽象模板（属性+方法）</li>
+                <li><strong>对象</strong>：类的实例，通过<code>new</code>创建</li>
+            </ul>
+
+            <h4>示例：类与对象</h4>
+            <div class="code-block">
+<span class="comment">// 定义Student类</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">Student</span> {
+    <span class="comment">// 属性（成员变量）</span>
+    <span class="class">String</span> name;
+    <span class="keyword">int</span> age;
+    
+    <span class="comment">// 方法（行为）</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">study</span>() {
+        <span class="class">System</span>.out.println(name + <span class="string">"在学习"</span>);
+    }
+    
+    <span class="comment">// 主方法（测试）</span>
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="comment">// 创建对象</span>
+        <span class="class">Student</span> s = <span class="keyword">new</span> <span class="class">Student</span>();
+        
+        <span class="comment">// 调用属性</span>
+        s.name = <span class="string">"Tom"</span>;
+        s.age = <span class="number">18</span>;
+        
+        <span class="comment">// 调用方法</span>
+        s.study();
+    }
+}
+            </div>
+
+            <h3>2. 构造方法与this关键字</h3>
+            <ul>
+                <li><strong>构造方法</strong>：与类名同名，无返回值，用于初始化对象</li>
+                <li><strong>this</strong>：指代当前对象，可调用本类属性、方法、构造方法</li>
+            </ul>
+
+            <h4>示例：构造方法与this</h4>
+            <div class="code-block">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">Student</span> {
+    <span class="class">String</span> name;
+    <span class="keyword">int</span> age;
+    
+    <span class="comment">// 无参构造方法</span>
+    <span class="keyword">public</span> <span class="class">Student</span>() {
+        <span class="keyword">this</span>(<span class="string">"未知"</span>, <span class="number">0</span>);  <span class="comment">// 调用有参构造</span>
+    }
+    
+    <span class="comment">// 有参构造方法</span>
+    <span class="keyword">public</span> <span class="class">Student</span>(<span class="class">String</span> name, <span class="keyword">int</span> age) {
+        <span class="keyword">this</span>.name = name;  <span class="comment">// this区分成员变量与参数</span>
+        <span class="keyword">this</span>.age = age;
+    }
+    
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">display</span>() {
+        <span class="class">System</span>.out.println(<span class="string">"姓名: "</span> + <span class="keyword">this</span>.name + <span class="string">", 年龄: "</span> + <span class="keyword">this</span>.age);
+    }
+}
+            </div>
+
+            <h3>3. 封装</h3>
+            <ul>
+                <li><strong>原则</strong>：隐藏属性，暴露方法（通过<code>private</code>修饰属性，<code>public</code>的getter/setter访问）</li>
+            </ul>
+
+            <h4>示例：封装</h4>
+            <div class="code-block">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">Student</span> {
+    <span class="comment">// 私有属性（外部不能直接访问）</span>
+    <span class="keyword">private</span> <span class="class">String</span> name;
+    <span class="keyword">private</span> <span class="keyword">int</span> age;
+    
+    <span class="comment">// getter方法（获取属性值）</span>
+    <span class="keyword">public</span> <span class="class">String</span> <span class="function">getName</span>() {
+        <span class="keyword">return</span> name;
+    }
+    
+    <span class="comment">// setter方法（设置属性值，可加验证逻辑）</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">setAge</span>(<span class="keyword">int</span> age) {
+        <span class="keyword">if</span> (age &gt; <span class="number">0</span> && age &lt; <span class="number">150</span>) {
+            <span class="keyword">this</span>.age = age;
+        } <span class="keyword">else</span> {
+            <span class="class">System</span>.out.println(<span class="string">"年龄无效"</span>);
+        }
+    }
+    
+    <span class="keyword">public</span> <span class="keyword">int</span> <span class="function">getAge</span>() {
+        <span class="keyword">return</span> age;
+    }
+}
+            </div>
+
+            <h3>4. 继承（extends）</h3>
+            <ul>
+                <li><strong>作用</strong>：代码复用，子类继承父类非<code>private</code>的属性和方法（Java单继承）</li>
+                <li><strong>super</strong>：访问父类属性、方法、构造</li>
+                <li><strong>方法重写（@Override）</strong>：子类对父类方法的重新实现</li>
+            </ul>
+
+            <h4>示例：继承</h4>
+            <div class="code-block">
+<span class="comment">// 父类</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">Person</span> {
+    <span class="class">String</span> name;
+    
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">eat</span>() {
+        <span class="class">System</span>.out.println(name + <span class="string">"在吃饭"</span>);
+    }
+}
+
+<span class="comment">// 子类</span>
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">Student</span> <span class="keyword">extends</span> <span class="class">Person</span> {
+    <span class="keyword">int</span> score;  <span class="comment">// 新增属性</span>
+    
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">study</span>() {  <span class="comment">// 新增方法</span>
+        <span class="class">System</span>.out.println(name + <span class="string">"在学习"</span>);
+    }
+    
+    <span class="comment">// 方法重写</span>
+    <span class="keyword">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">eat</span>() {
+        <span class="keyword">super</span>.eat();  <span class="comment">// 调用父类方法</span>
+        <span class="class">System</span>.out.println(<span class="string">"学生吃饭要快一点"</span>);
+    }
+}
+            </div>
+
+            <h3>5. 多态</h3>
+            <ul>
+                <li><strong>表现</strong>：父类引用指向子类对象（向上转型），调用方法时执行子类重写的版本</li>
+                <li><strong>前提</strong>：继承+方法重写</li>
+            </ul>
+
+            <h4>示例：多态</h4>
+            <div class="code-block">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">PolymorphismDemo</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="comment">// 向上转型：父类引用指向子类对象</span>
+        <span class="class">Person</span> p = <span class="keyword">new</span> <span class="class">Student</span>();
+        p.name = <span class="string">"Tom"</span>;
+        p.eat();  <span class="comment">// 执行Student中重写的eat()方法</span>
+    }
+}
+            </div>
+        </div>
+
+        <!-- 四、数组与集合框架 -->
+        <div class="section">
+            <h2>四、数组与集合框架</h2>
+            
+            <h3>1. 数组</h3>
+            <ul>
+                <li><strong>定义与初始化</strong>：静态（<code>int[] arr = {1,2,3};</code>）、动态（<code>int[] arr = new int[3];</code>）</li>
+                <li><strong>遍历</strong>：普通for循环、增强for循环</li>
+            </ul>
+
+            <h4>示例：数组操作</h4>
+            <div class="code-block">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">ArrayExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="comment">// 静态初始化</span>
+        <span class="keyword">int</span>[] arr1 = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};
+        
+        <span class="comment">// 动态初始化</span>
+        <span class="keyword">int</span>[] arr2 = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>];  <span class="comment">// 默认值为0</span>
+        
+        <span class="comment">// 普通for循环遍历</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arr1.length; i++) {
+            <span class="class">System</span>.out.print(arr1[i] + <span class="string">" "</span>);
+        }
+        <span class="class">System</span>.out.println();
+        
+        <span class="comment">// 增强for循环遍历</span>
+        <span class="keyword">for</span> (<span class="keyword">int</span> num : arr1) {
+            <span class="class">System</span>.out.print(num + <span class="string">" "</span>);
+        }
+    }
+}
+            </div>
+
+            <h3>2. 集合框架（重点）</h3>
+            <ul>
+                <li><strong>List</strong>（有序、可重复）：<code>ArrayList</code>（基于数组，查询快、增删慢）、<code>LinkedList</code>（基于链表，增删快、查询慢）</li>
+                <li><strong>Set</strong>（无序、不可重复）：<code>HashSet</code>（基于哈希表，查询快）</li>
+                <li><strong>Map</strong>（键值对，键唯一）：<code>HashMap</code>（常用，键值可为<code>null</code>）</li>
+            </ul>
+
+            <h4>示例：集合框架</h4>
+            <div class="code-block">
+<span class="keyword">import</span> java.util.*;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">CollectionExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="comment">// ArrayList（List接口的实现）</span>
+        <span class="class">List</span>&lt;<span class="class">String</span>&gt; list = <span class="keyword">new</span> <span class="class">ArrayList</span>&lt;&gt;();
+        list.add(<span class="string">"Java"</span>);
+        list.add(<span class="string">"Python"</span>);
+        list.add(<span class="string">"C++"</span>);
+        <span class="class">System</span>.out.println(<span class="string">"List: "</span> + list);
+        <span class="class">System</span>.out.println(<span class="string">"第一个元素: "</span> + list.get(<span class="number">0</span>));
+        
+        <span class="comment">// HashSet（Set接口的实现）</span>
+        <span class="class">Set</span>&lt;<span class="class">String</span>&gt; set = <span class="keyword">new</span> <span class="class">HashSet</span>&lt;&gt;();
+        set.add(<span class="string">"apple"</span>);
+        set.add(<span class="string">"banana"</span>);
+        set.add(<span class="string">"apple"</span>);  <span class="comment">// 重复元素，不会添加</span>
+        <span class="class">System</span>.out.println(<span class="string">"Set: "</span> + set);
+        
+        <span class="comment">// HashMap（Map接口的实现）</span>
+        <span class="class">Map</span>&lt;<span class="class">String</span>, <span class="class">Integer</span>&gt; map = <span class="keyword">new</span> <span class="class">HashMap</span>&lt;&gt;();
+        map.put(<span class="string">"Java"</span>, <span class="number">95</span>);
+        map.put(<span class="string">"Python"</span>, <span class="number">90</span>);
+        <span class="class">System</span>.out.println(<span class="string">"Map: "</span> + map);
+        <span class="class">System</span>.out.println(<span class="string">"Java的分数: "</span> + map.get(<span class="string">"Java"</span>));
+    }
+}
+            </div>
+        </div>
+
+        <!-- 五、字符串与异常处理 -->
+        <div class="section">
+            <h2>五、字符串与异常处理</h2>
+            
+            <h3>1. 字符串处理</h3>
+            <ul>
+                <li><strong>String类</strong>：不可变（修改会创建新对象），常用方法：<code>length()</code>、<code>charAt(index)</code>、<code>substring(start, end)</code>、<code>equals(str)</code>、<code>indexOf(str)</code>、<code>split(regex)</code></li>
+                <li><strong>StringBuilder/StringBuffer</strong>：可变字符串（效率更高），<code>append()</code>拼接、<code>reverse()</code>反转</li>
+            </ul>
+
+            <h4>示例：字符串操作</h4>
+            <div class="code-block">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">StringExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="class">String</span> str = <span class="string">"Hello, Java!"</span>;
+        
+        <span class="comment">// 长度</span>
+        <span class="class">System</span>.out.println(<span class="string">"长度: "</span> + str.length());
+        
+        <span class="comment">// 取字符</span>
+        <span class="class">System</span>.out.println(<span class="string">"第一个字符: "</span> + str.charAt(<span class="number">0</span>));
+        
+        <span class="comment">// 截取子串</span>
+        <span class="class">System</span>.out.println(<span class="string">"子串: "</span> + str.substring(<span class="number">0</span>, <span class="number">5</span>));
+        
+        <span class="comment">// 查找</span>
+        <span class="class">System</span>.out.println(<span class="string">"Java的位置: "</span> + str.indexOf(<span class="string">"Java"</span>));
+        
+        <span class="comment">// 分割</span>
+        <span class="class">String</span>[] parts = str.split(<span class="string">", "</span>);
+        <span class="keyword">for</span> (<span class="class">String</span> part : parts) {
+            <span class="class">System</span>.out.println(part);
+        }
+        
+        <span class="comment">// StringBuilder（可变字符串）</span>
+        <span class="class">StringBuilder</span> sb = <span class="keyword">new</span> <span class="class">StringBuilder</span>();
+        sb.append(<span class="string">"Hello"</span>).append(<span class="string">" "</span>).append(<span class="string">"World"</span>);
+        <span class="class">System</span>.out.println(<span class="string">"拼接结果: "</span> + sb.toString());
+    }
+}
+            </div>
+
+            <h3>2. 异常处理</h3>
+            <ul>
+                <li><strong>异常概念</strong>：程序运行时错误（如<code>NullPointerException</code>空指针、<code>ArrayIndexOutOfBoundsException</code>数组越界）</li>
+                <li><strong>处理结构</strong>：<code>try-catch-finally</code></li>
+                <li><strong>抛出异常</strong>：<code>throw</code>（手动抛异常）、<code>throws</code>（方法声明可能抛的异常）</li>
+            </ul>
+
+            <h4>示例：异常处理</h4>
+            <div class="code-block">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">ExceptionExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="keyword">try</span> {
+            <span class="keyword">int</span>[] arr = {<span class="number">1</span>};
+            <span class="class">System</span>.out.println(arr[<span class="number">1</span>]);  <span class="comment">// 越界异常</span>
+        } <span class="keyword">catch</span> (<span class="class">ArrayIndexOutOfBoundsException</span> e) {
+            <span class="class">System</span>.out.println(<span class="string">"数组越界: "</span> + e.getMessage());
+            e.printStackTrace();  <span class="comment">// 打印异常堆栈</span>
+        } <span class="keyword">finally</span> {
+            <span class="class">System</span>.out.println(<span class="string">"无论是否异常都执行"</span>);  <span class="comment">// 常用于释放资源</span>
+        }
+        
+        <span class="comment">// 手动抛出异常</span>
+        <span class="keyword">try</span> {
+            <span class="function">divide</span>(<span class="number">10</span>, <span class="number">0</span>);
+        } <span class="keyword">catch</span> (<span class="class">ArithmeticException</span> e) {
+            <span class="class">System</span>.out.println(<span class="string">"捕获异常: "</span> + e.getMessage());
+        }
+    }
+    
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="function">divide</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) <span class="keyword">throws</span> <span class="class">ArithmeticException</span> {
+        <span class="keyword">if</span> (b == <span class="number">0</span>) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="class">ArithmeticException</span>(<span class="string">"除数不能为0"</span>);
+        }
+        <span class="keyword">return</span> a / b;
+    }
+}
+            </div>
+        </div>
+
+        <!-- 六、IO流与多线程 -->
+        <div class="section">
+            <h2>六、IO流与多线程</h2>
+            
+            <h3>1. IO流（输入输出）</h3>
+            <ul>
+                <li><strong>File类</strong>：操作文件/目录（创建、删除、判断是否存在）</li>
+                <li><strong>字节流</strong>：<code>InputStream</code>（读）、<code>OutputStream</code>（写），用于任意文件</li>
+                <li><strong>字符流</strong>：<code>Reader</code>、<code>Writer</code>，用于文本文件</li>
+                <li><strong>缓冲流</strong>：<code>BufferedReader</code>、<code>BufferedWriter</code>（加缓冲提高效率）</li>
+            </ul>
+
+            <h4>示例：文件读写</h4>
+            <div class="code-block">
+<span class="keyword">import</span> java.io.*;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">FileExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="comment">// 写文件</span>
+        <span class="keyword">try</span> (<span class="class">BufferedWriter</span> writer = <span class="keyword">new</span> <span class="class">BufferedWriter</span>(
+                <span class="keyword">new</span> <span class="class">FileWriter</span>(<span class="string">"test.txt"</span>))) {
+            writer.write(<span class="string">"Hello, Java!\n"</span>);
+            writer.write(<span class="string">"这是文件操作示例"</span>);
+            <span class="class">System</span>.out.println(<span class="string">"文件写入成功"</span>);
+        } <span class="keyword">catch</span> (<span class="class">IOException</span> e) {
+            e.printStackTrace();
+        }
+        
+        <span class="comment">// 读文件</span>
+        <span class="keyword">try</span> (<span class="class">BufferedReader</span> reader = <span class="keyword">new</span> <span class="class">BufferedReader</span>(
+                <span class="keyword">new</span> <span class="class">FileReader</span>(<span class="string">"test.txt"</span>))) {
+            <span class="class">String</span> line;
+            <span class="class">System</span>.out.println(<span class="string">"文件内容:"</span>);
+            <span class="keyword">while</span> ((line = reader.readLine()) != <span class="keyword">null</span>) {
+                <span class="class">System</span>.out.println(line);
+            }
+        } <span class="keyword">catch</span> (<span class="class">IOException</span> e) {
+            e.printStackTrace();
+        }
+    }
+}
+            </div>
+
+            <h3>2. 多线程</h3>
+            <ul>
+                <li><strong>线程概念</strong>：进程内的执行单元（并发执行）</li>
+                <li><strong>创建方式</strong>：继承<code>Thread</code>类、实现<code>Runnable</code>接口（推荐）</li>
+                <li><strong>线程同步</strong>：<code>synchronized</code>关键字（解决多线程共享资源冲突）</li>
+            </ul>
+
+            <h4>示例：多线程</h4>
+            <div class="code-block">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">ThreadExample</span> {
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="comment">// 方式1：继承Thread类</span>
+        <span class="class">MyThread</span> t1 = <span class="keyword">new</span> <span class="class">MyThread</span>();
+        t1.start();
+        
+        <span class="comment">// 方式2：实现Runnable接口（推荐）</span>
+        <span class="class">Thread</span> t2 = <span class="keyword">new</span> <span class="class">Thread</span>(<span class="keyword">new</span> <span class="class">MyRunnable</span>());
+        t2.start();
+    }
+}
+
+<span class="comment">// 方式1：继承Thread类</span>
+<span class="keyword">class</span> <span class="class">MyThread</span> <span class="keyword">extends</span> <span class="class">Thread</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">run</span>() {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+            <span class="class">System</span>.out.println(<span class="string">"Thread: "</span> + i);
+        }
+    }
+}
+
+<span class="comment">// 方式2：实现Runnable接口</span>
+<span class="keyword">class</span> <span class="class">MyRunnable</span> <span class="keyword">implements</span> <span class="class">Runnable</span> {
+    <span class="keyword">@Override</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">run</span>() {
+        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+            <span class="class">System</span>.out.println(<span class="string">"Runnable: "</span> + i);
+        }
+    }
+}
+            </div>
+        </div>
+
+        <!-- 七、进阶与实战 -->
+        <div class="section">
+            <h2>七、进阶与实战</h2>
+            
+            <h3>1. 进阶知识</h3>
+            <ul>
+                <li><strong>泛型</strong>：限制集合元素类型（<code>List&lt;String&gt; list = new ArrayList&lt;&gt;();</code>，避免类型转换错误）</li>
+                <li><strong>Lambda表达式</strong>（Java 8+）：简化匿名内部类（<code>(a,b) -&gt; a + b</code>）</li>
+                <li><strong>Stream API</strong>（Java 8+）：高效处理集合（过滤、映射、排序等）</li>
+            </ul>
+
+            <h3>2. 实战项目</h3>
+            <ul>
+                <li><strong>基础</strong>：控制台版学生管理系统（增删改查，用<code>ArrayList</code>存储）、简易图书借阅系统</li>
+                <li><strong>进阶</strong>：GUI版计算器（用Swing组件）、文件加密工具（IO流+简单算法）</li>
+            </ul>
+
+            <h4>示例：学生管理系统（简化版）</h4>
+            <div class="code-block">
+<span class="keyword">import</span> java.util.*;
+
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="class">StudentManagement</span> {
+    <span class="keyword">private</span> <span class="class">List</span>&lt;<span class="class">Student</span>&gt; students = <span class="keyword">new</span> <span class="class">ArrayList</span>&lt;&gt;();
+    
+    <span class="comment">// 添加学生</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">addStudent</span>(<span class="class">Student</span> student) {
+        students.add(student);
+        <span class="class">System</span>.out.println(<span class="string">"添加成功"</span>);
+    }
+    
+    <span class="comment">// 查询所有学生</span>
+    <span class="keyword">public</span> <span class="keyword">void</span> <span class="function">listAll</span>() {
+        <span class="keyword">for</span> (<span class="class">Student</span> s : students) {
+            <span class="class">System</span>.out.println(s.getName() + <span class="string">" - "</span> + s.getAge() + <span class="string">"岁"</span>);
+        }
+    }
+    
+    <span class="comment">// 根据姓名查找</span>
+    <span class="keyword">public</span> <span class="class">Student</span> <span class="function">findByName</span>(<span class="class">String</span> name) {
+        <span class="keyword">for</span> (<span class="class">Student</span> s : students) {
+            <span class="keyword">if</span> (s.getName().equals(name)) {
+                <span class="keyword">return</span> s;
+            }
+        }
+        <span class="keyword">return</span> <span class="keyword">null</span>;
+    }
+    
+    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="function">main</span>(<span class="class">String</span>[] args) {
+        <span class="class">StudentManagement</span> sm = <span class="keyword">new</span> <span class="class">StudentManagement</span>();
+        sm.addStudent(<span class="keyword">new</span> <span class="class">Student</span>(<span class="string">"Tom"</span>, <span class="number">18</span>));
+        sm.addStudent(<span class="keyword">new</span> <span class="class">Student</span>(<span class="string">"Alice"</span>, <span class="number">19</span>));
+        sm.listAll();
+    }
+}
+            </div>
+        </div>
+
+        <!-- 八、常见问题与调试 -->
+        <div class="section">
+            <h2>八、常见问题与调试</h2>
+            <div class="tip">
+                <strong>💡 调试技巧：</strong>
+                <ul>
+                    <li><strong>语法错误</strong>：IDE实时提示（如缺少分号、括号不匹配）</li>
+                    <li><strong>逻辑错误</strong>：<code>System.out.println()</code>打印变量调试，IDE断点调试（查看变量值、单步执行）</li>
+                    <li><strong>常见异常</strong>：<code>NullPointerException</code>（对象未初始化）、<code>ClassCastException</code>（类型转换错误）</li>
+                    <li><strong>代码规范</strong>：类名大写开头、方法/变量小写开头（驼峰式），注释清晰</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav-footer" style="text-align: center; margin-top: 50px; padding: 30px;">
+            <a href="c.html" style="color: #f5576c; text-decoration: none; padding: 10px 20px; background: #f0f0f0; border-radius: 5px; margin: 0 10px;">← 上一节：C语言</a>
+            <a href="index.html" style="color: #f5576c; text-decoration: none; padding: 10px 20px; background: #f0f0f0; border-radius: 5px; margin: 0 10px;">返回首页</a>
+            <a href="python.html" style="color: #f5576c; text-decoration: none; padding: 10px 20px; background: #f0f0f0; border-radius: 5px; margin: 0 10px;">下一节：Python →</a>
+        </div>
+    </div>
+</body>
+</html>
+

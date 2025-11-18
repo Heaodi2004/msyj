@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编程学习辅助平台 - 首页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .language-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .language-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .language-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .language-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .language-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .language-card .features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .language-card .features li {
+            padding: 8px 0;
+            color: #555;
+            border-bottom: 1px solid #eee;
+        }
+
+        .language-card .features li:last-child {
+            border-bottom: none;
+        }
+
+        .language-card .features li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .nav-footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+        }
+
+        .nav-footer a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 8px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+
+        .nav-footer a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .languages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 编程学习辅助平台</h1>
+            <p>专为编程初学者打造，循序渐进掌握编程基础</p>
+        </header>
+
+        <div class="languages-grid">
+            <a href="c.html" class="language-card">
+                <div class="language-icon">C</div>
+                <h2>C语言</h2>
+                <p>系统编程的基础语言，理解内存、指针和程序执行逻辑</p>
+                <ul class="features">
+                    <li>基础语法与数据类型</li>
+                    <li>指针与内存管理</li>
+                    <li>结构体与文件操作</li>
+                    <li>实战项目练习</li>
+                </ul>
+            </a>
+
+            <a href="java.html" class="language-card">
+                <div class="language-icon">☕</div>
+                <h2>Java</h2>
+                <p>面向对象编程的经典语言，跨平台、生态完善</p>
+                <ul class="features">
+                    <li>面向对象编程</li>
+                    <li>集合框架与异常处理</li>
+                    <li>IO流与多线程</li>
+                    <li>实战项目开发</li>
+                </ul>
+            </a>
+
+            <a href="python.html" class="language-card">
+                <div class="language-icon">🐍</div>
+                <h2>Python</h2>
+                <p>简洁易读的现代语言，适合快速上手和实际应用</p>
+                <ul class="features">
+                    <li>简洁语法与容器类型</li>
+                    <li>函数与模块化编程</li>
+                    <li>面向对象与文件操作</li>
+                    <li>数据分析与爬虫实战</li>
+                </ul>
+            </a>
+
+            <a href="frontend.html" class="language-card">
+                <div class="language-icon">🌐</div>
+                <h2>前端开发</h2>
+                <p>HTML+CSS+JavaScript，构建交互式网页应用</p>
+                <ul class="features">
+                    <li>HTML结构搭建</li>
+                    <li>CSS样式美化</li>
+                    <li>JavaScript交互逻辑</li>
+                    <li>响应式设计实战</li>
+                </ul>
+            </a>
+        </div>
+
+        <div class="nav-footer">
+            <a href="agent.html">🤖 访问编程语言智能体</a>
+        </div>
+    </div>
+</body>
+</html>
+

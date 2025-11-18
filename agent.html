@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编程语言智能体 - 编程学习辅助平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav {
+            background: rgba(255,255,255,0.95);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: #f0f0f0;
+        }
+
+        .agent-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .agent-section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .agent-intro {
+            text-align: center;
+            font-size: 1.2em;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card .icon {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .languages-section {
+            margin-top: 50px;
+        }
+
+        .languages-section h3 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .language-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .language-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .language-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .language-link .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .language-link h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .language-link p {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 50px;
+            padding: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+        }
+
+        .cta-section h3 {
+            color: white;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .nav {
+                text-align: center;
+            }
+
+            .nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .language-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 编程语言智能体</h1>
+            <p>您的专属编程学习助手，随时为您提供学习支持与互动体验</p>
+        </div>
+
+        <div class="nav">
+            <a href="index.html">🏠 首页</a>
+            <a href="c.html">📘 C语言</a>
+            <a href="java.html">☕ Java</a>
+            <a href="python.html">🐍 Python</a>
+            <a href="frontend.html">🌐 前端</a>
+        </div>
+
+        <div class="agent-section">
+            <h2>智能体功能说明</h2>
+            <div class="agent-intro">
+                <p>编程语言智能体是专为初学者设计的AI学习助手，能够根据您的学习进度和需求，提供个性化的学习指导、代码示例解析、问题解答等服务。</p>
+                <p>无论您在学习哪种编程语言，智能体都能为您提供即时、准确的学习支持。</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">💡</div>
+                    <h3>智能答疑</h3>
+                    <p>遇到编程问题？智能体可以为您解答语法疑问、解释代码逻辑、提供解决方案，让学习过程更加顺畅。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">📝</div>
+                    <h3>代码解析</h3>
+                    <p>不理解某段代码？智能体可以逐行解析代码含义，解释每个语法点的作用，帮助您深入理解编程概念。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🎯</div>
+                    <h3>学习路径规划</h3>
+                    <p>不知道从哪里开始？智能体可以根据您的目标，为您规划个性化的学习路径，推荐合适的学习资源。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">🔍</div>
+                    <h3>错误诊断</h3>
+                    <p>代码报错不知道原因？智能体可以分析错误信息，定位问题所在，并提供修复建议。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">💻</div>
+                    <h3>实战项目指导</h3>
+                    <p>想要做项目但不知从何下手？智能体可以为您提供项目思路、代码框架和实现建议。</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="icon">📚</div>
+                    <h3>知识梳理</h3>
+                    <p>需要复习某个知识点？智能体可以为您梳理知识体系，总结重点难点，帮助您巩固学习成果。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="agent-section languages-section">
+            <h3>访问各语言专属智能体</h3>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">点击下方卡片，跳转到对应编程语言的智能体页面，获取针对性的学习支持</p>
+            
+            <div class="language-links">
+                <a href="c.html" class="language-link">
+                    <div class="icon">C</div>
+                    <h4>C语言智能体</h4>
+                    <p>指针、内存管理、系统编程指导</p>
+                </a>
+
+                <a href="java.html" class="language-link">
+                    <div class="icon">☕</div>
+                    <h4>Java智能体</h4>
+                    <p>面向对象、集合框架、多线程支持</p>
+                </a>
+
+                <a href="python.html" class="language-link">
+                    <div class="icon">🐍</div>
+                    <h4>Python智能体</h4>
+                    <p>简洁语法、数据分析、爬虫实战</p>
+                </a>
+
+                <a href="frontend.html" class="language-link">
+                    <div class="icon">🌐</div>
+                    <h4>前端智能体</h4>
+                    <p>HTML/CSS/JS、响应式设计指导</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h3>开始您的编程学习之旅</h3>
+            <p>选择一门编程语言，从基础开始，循序渐进，掌握编程技能</p>
+            <a href="https://www.coze.cn/store/project/7570955725162381338?entity_id=1&bid=6i6uhl8t88g16" class="btn">点击跳转智能体</a>
+        </div>
+    </div>
+</body>
+</html>
+

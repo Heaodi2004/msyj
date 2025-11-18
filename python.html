@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python学习 - 编程学习辅助平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .nav {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: #4facfe;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #4facfe;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #4facfe;
+        }
+
+        .section h3 {
+            color: #555;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        .section h4 {
+            color: #777;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .section ul, .section ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .code-block .keyword { color: #c678dd; }
+        .code-block .string { color: #98c379; }
+        .code-block .comment { color: #5c6370; font-style: italic; }
+        .code-block .function { color: #61afef; }
+        .code-block .number { color: #d19a66; }
+        .code-block .builtin { color: #e5c07b; }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .tip {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip strong {
+            color: #0c5460;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav {
+                text-align: center;
+            }
+
+            .nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🐍 Python学习指南</h1>
+        <p>简洁易读的现代语言，适合快速上手和实际应用</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">🏠 首页</a>
+        <a href="c.html">📘 C语言</a>
+        <a href="java.html">☕ Java</a>
+        <a href="frontend.html">🌐 前端</a>
+        <a href="agent.html">🤖 智能体</a>
+    </div>
+
+    <div class="container">
+        <!-- 一、Python入门基础 -->
+        <div class="section">
+            <h2>一、Python入门基础</h2>
+            
+            <h3>1. Python初识</h3>
+            <ul>
+                <li><strong>历史与特点</strong>：Guido van Rossum设计（1989年），强调「代码可读性」（缩进语法）、「简洁高效」，动态类型</li>
+                <li><strong>应用场景</strong>：Web开发（Django/Flask）、数据分析（Pandas/Numpy）、人工智能（TensorFlow/PyTorch）、自动化脚本、爬虫等</li>
+                <li><strong>为什么学Python</strong>：语法简单（接近自然语言）、入门门槛低，适合零基础，生态完善</li>
+            </ul>
+
+            <h3>2. 开发环境搭建</h3>
+            <ul>
+                <li><strong>解释器安装</strong>：Python官网下载（推荐3.8+版本），注意勾选「Add Python to PATH」</li>
+                <li><strong>编辑器选择</strong>：IDLE（Python自带）、PyCharm（推荐，社区版免费）、VS Code（需装Python插件）</li>
+                <li><strong>第一个程序</strong>：Hello World（无需类/主函数，直接执行）</li>
+            </ul>
+
+            <h4>示例：Hello World</h4>
+            <div class="code-block">
+<span class="comment"># Python的第一个程序（无需类/主函数）</span>
+<span class="builtin">print</span>(<span class="string">"Hello, World!"</span>)
+            </div>
+        </div>
+
+        <!-- 二、核心语法 -->
+        <div class="section">
+            <h2>二、核心语法：变量、运算与控制流</h2>
+            
+            <h3>1. 变量与数据类型</h3>
+            <ul>
+                <li><strong>变量定义</strong>：无需声明类型，直接赋值（<code>name = "Python"; age = 18</code>）</li>
+                <li><strong>基本数据类型</strong>：
+                    <ul>
+                        <li>数值：<code>int</code>（整数）、<code>float</code>（浮点数）、<code>complex</code>（复数）</li>
+                        <li>字符串：<code>str</code>（单/双引号包裹，支持三引号多行文本）</li>
+                        <li>布尔：<code>bool</code>（<code>True</code>/<code>False</code>）</li>
+                        <li>空值：<code>None</code>（表示无值）</li>
+                    </ul>
+                </li>
+                <li><strong>类型转换</strong>：<code>int("123")</code>、<code>str(123)</code>、<code>float(10)</code></li>
+            </ul>
+
+            <h4>示例：变量与数据类型</h4>
+            <div class="code-block">
+<span class="comment"># 变量定义（无需声明类型）</span>
+name = <span class="string">"Python"</span>
+age = <span class="number">18</span>
+is_student = <span class="keyword">True</span>
+price = <span class="number">99.99</span>
+
+<span class="comment"># 类型转换</span>
+num_str = <span class="string">"123"</span>
+num_int = <span class="builtin">int</span>(num_str)  <span class="comment"># 字符串转整数</span>
+num_str2 = <span class="builtin">str</span>(age)  <span class="comment"># 整数转字符串</span>
+
+<span class="builtin">print</span>(<span class="string">f"姓名: {name}, 年龄: {age}"</span>)  <span class="comment"># f-string格式化</span>
+<span class="builtin">print</span>(<span class="string">f"转换后的数字: {num_int}"</span>)
+            </div>
+
+            <h3>2. 运算符与表达式</h3>
+            <ul>
+                <li><strong>算术运算符</strong>：<code>+ - * / //</code>（整除，<code>5//2=2</code>）、<code>%</code>（取余）、<code>**</code>（幂运算，<code>2**3=8</code>）</li>
+                <li><strong>逻辑运算符</strong>：<code>and</code>（与）、<code>or</code>（或）、<code>not</code>（非）（短路特性）</li>
+                <li><strong>成员运算符</strong>：<code>in</code>（判断元素是否在序列中）、<code>not in</code></li>
+            </ul>
+
+            <h3>3. 控制流语句（缩进是核心！）</h3>
+            <ul>
+                <li><strong>分支结构</strong>：<code>if-elif-else</code>（无需括号，靠缩进区分代码块）</li>
+                <li><strong>循环结构</strong>：<code>for</code>循环（遍历序列）、<code>while</code>循环（条件为True时执行）</li>
+                <li><strong>循环控制</strong>：<code>break</code>（跳出循环）、<code>continue</code>（跳过本次循环）</li>
+            </ul>
+
+            <h4>示例：控制流语句</h4>
+            <div class="code-block">
+<span class="comment"># if-elif-else 分支（注意缩进！）</span>
+score = <span class="number">85</span>
+<span class="keyword">if</span> score &gt;= <span class="number">90</span>:
+    <span class="builtin">print</span>(<span class="string">"优秀"</span>)
+<span class="keyword">elif</span> score &gt;= <span class="number">60</span>:
+    <span class="builtin">print</span>(<span class="string">"及格"</span>)
+<span class="keyword">else</span>:
+    <span class="builtin">print</span>(<span class="string">"不及格"</span>)
+
+<span class="comment"># for循环：遍历1-10（range生成整数序列）</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">1</span>, <span class="number">11</span>):
+    <span class="builtin">print</span>(i)
+
+<span class="comment"># for循环：遍历字符串</span>
+<span class="keyword">for</span> char <span class="keyword">in</span> <span class="string">"Python"</span>:
+    <span class="builtin">print</span>(char)
+
+<span class="comment"># while循环</span>
+count = <span class="number">0</span>
+<span class="keyword">while</span> count &lt; <span class="number">5</span>:
+    <span class="builtin">print</span>(count)
+    count += <span class="number">1</span>  <span class="comment"># 避免死循环</span>
+            </div>
+        </div>
+
+        <!-- 三、容器类型 -->
+        <div class="section">
+            <h2>三、容器类型（Python核心数据结构）</h2>
+            
+            <h3>1. 列表（List）：有序、可修改、元素可重复</h3>
+            <ul>
+                <li><strong>定义</strong>：<code>nums = [1, 2, 3]; names = ["Alice", "Bob"]</code></li>
+                <li><strong>核心操作</strong>：
+                    <ul>
+                        <li>访问：<code>nums[0]</code>（支持负索引：<code>nums[-1]</code>取最后一个）</li>
+                        <li>切片：<code>nums[1:3]</code>（取索引1到2的元素）</li>
+                        <li>增删改：<code>nums.append(4)</code>、<code>nums.insert(1, 5)</code>、<code>nums.remove(2)</code>、<code>nums[0] = 10</code></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>示例：列表操作</h4>
+            <div class="code-block">
+<span class="comment"># 列表定义</span>
+nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+names = [<span class="string">"Alice"</span>, <span class="string">"Bob"</span>, <span class="string">"Charlie"</span>]
+
+<span class="comment"># 访问元素</span>
+<span class="builtin">print</span>(nums[<span class="number">0</span>])  <span class="comment"># 第一个元素：1</span>
+<span class="builtin">print</span>(nums[-<span class="number">1</span>])  <span class="comment"># 最后一个元素：5（负索引）</span>
+
+<span class="comment"># 切片</span>
+<span class="builtin">print</span>(nums[<span class="number">1</span>:<span class="number">3</span>])  <span class="comment"># [2, 3]（取索引1到2）</span>
+<span class="builtin">print</span>(nums[:<span class="number">3</span>])  <span class="comment"># [1, 2, 3]（从开头到索引2）</span>
+<span class="builtin">print</span>(nums[<span class="number">2</span>:])  <span class="comment"># [3, 4, 5]（从索引2到末尾）</span>
+
+<span class="comment"># 增删改</span>
+nums.append(<span class="number">6</span>)  <span class="comment"># 末尾添加元素</span>
+nums.insert(<span class="number">1</span>, <span class="number">10</span>)  <span class="comment"># 指定位置插入</span>
+nums.remove(<span class="number">2</span>)  <span class="comment"># 删除值为2的元素</span>
+nums[<span class="number">0</span>] = <span class="number">100</span>  <span class="comment"># 修改元素</span>
+
+<span class="comment"># 常用方法</span>
+<span class="builtin">print</span>(<span class="builtin">len</span>(nums))  <span class="comment"># 长度</span>
+<span class="builtin">print</span>(<span class="builtin">sorted</span>(nums))  <span class="comment"># 排序（返回新列表）</span>
+nums.reverse()  <span class="comment"># 反转列表</span>
+            </div>
+
+            <h3>2. 元组（Tuple）：有序、不可修改、元素可重复</h3>
+            <ul>
+                <li><strong>定义</strong>：<code>point = (3, 4); single = (5,)</code>（单元素需加逗号）</li>
+                <li><strong>特点</strong>：比列表更轻量，适合存储不可变数据（如坐标、配置信息）</li>
+            </ul>
+
+            <h4>示例：元组操作</h4>
+            <div class="code-block">
+<span class="comment"># 元组定义</span>
+point = (<span class="number">3</span>, <span class="number">4</span>)
+single = (<span class="number">5</span>,)  <span class="comment"># 单元素需加逗号</span>
+
+<span class="comment"># 访问元素（同列表）</span>
+<span class="builtin">print</span>(point[<span class="number">0</span>])  <span class="comment"># 3</span>
+<span class="builtin">print</span>(point[<span class="number">1</span>])  <span class="comment"># 4</span>
+
+<span class="comment"># 元组不可修改（会报错）</span>
+<span class="comment"># point[0] = 10  # TypeError</span>
+            </div>
+
+            <h3>3. 字典（Dictionary）：键值对集合，无序（Python 3.7+有序）</h3>
+            <ul>
+                <li><strong>定义</strong>：<code>student = {"name": "Tom", "age": 18, "score": 90}</code>（键需唯一，通常为字符串/数字）</li>
+                <li><strong>核心操作</strong>：
+                    <ul>
+                        <li>访问：<code>student["name"]</code>、<code>student.get("age")</code>（无键时返回None）</li>
+                        <li>增删改：<code>student["gender"] = "男"</code>、<code>student["age"] = 19</code>、<code>del student["score"]</code></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h4>示例：字典操作</h4>
+            <div class="code-block">
+<span class="comment"># 字典定义</span>
+student = {
+    <span class="string">"name"</span>: <span class="string">"Tom"</span>,
+    <span class="string">"age"</span>: <span class="number">18</span>,
+    <span class="string">"score"</span>: <span class="number">90</span>
+}
+
+<span class="comment"># 访问</span>
+<span class="builtin">print</span>(student[<span class="string">"name"</span>])  <span class="comment"># Tom</span>
+<span class="builtin">print</span>(student.get(<span class="string">"age"</span>))  <span class="comment"># 18（推荐，无键时返回None）</span>
+
+<span class="comment"># 增删改</span>
+student[<span class="string">"gender"</span>] = <span class="string">"男"</span>  <span class="comment"># 新增键值对</span>
+student[<span class="string">"age"</span>] = <span class="number">19</span>  <span class="comment"># 修改</span>
+<span class="keyword">del</span> student[<span class="string">"score"</span>]  <span class="comment"># 删除键值对</span>
+
+<span class="comment"># 常用方法</span>
+<span class="builtin">print</span>(student.keys())  <span class="comment"># 所有键</span>
+<span class="builtin">print</span>(student.values())  <span class="comment"># 所有值</span>
+<span class="builtin">print</span>(student.items())  <span class="comment"># 所有键值对</span>
+            </div>
+
+            <h3>4. 集合（Set）：无序、元素不可重复</h3>
+            <ul>
+                <li><strong>定义</strong>：<code>s = {1, 2, 3}; s2 = set([2, 3, 4])</code>（去重常用）</li>
+                <li><strong>集合运算</strong>：<code>s & s2</code>（交集）、<code>s | s2</code>（并集）、<code>s - s2</code>（差集）</li>
+            </ul>
+
+            <h4>示例：集合操作</h4>
+            <div class="code-block">
+<span class="comment"># 集合定义</span>
+s = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>}
+s2 = <span class="builtin">set</span>([<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>])
+
+<span class="comment"># 去重</span>
+nums = [<span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">3</span>]
+unique = <span class="builtin">set</span>(nums)  <span class="comment"># {1, 2, 3}</span>
+
+<span class="comment"># 集合运算</span>
+<span class="builtin">print</span>(s & s2)  <span class="comment"># 交集：{2, 3}</span>
+<span class="builtin">print</span>(s | s2)  <span class="comment"># 并集：{1, 2, 3, 4}</span>
+<span class="builtin">print</span>(s - s2)  <span class="comment"># 差集：{1}</span>
+            </div>
+        </div>
+
+        <!-- 四、函数与模块化编程 -->
+        <div class="section">
+            <h2>四、函数与模块化编程</h2>
+            
+            <h3>1. 函数基础</h3>
+            <ul>
+                <li><strong>定义</strong>：用<code>def</code>关键字</li>
+                <li><strong>文档字符串</strong>：<code>"""函数说明"""</code>（用<code>help(add)</code>查看）</li>
+            </ul>
+
+            <h4>示例：函数定义与调用</h4>
+            <div class="code-block">
+<span class="comment"># 函数定义</span>
+<span class="keyword">def</span> <span class="function">add</span>(a, b):
+    <span class="string">"""计算两个数的和"""</span>  <span class="comment"># 文档字符串</span>
+    result = a + b
+    <span class="keyword">return</span> result
+
+<span class="comment"># 函数调用</span>
+sum_result = add(<span class="number">3</span>, <span class="number">5</span>)
+<span class="builtin">print</span>(sum_result)  <span class="comment"># 8</span>
+            </div>
+
+            <h3>2. 函数参数（Python特色）</h3>
+            <ul>
+                <li><strong>位置参数</strong>：按顺序传递（<code>add(3,5)</code>中3对应a，5对应b）</li>
+                <li><strong>关键字参数</strong>：指定参数名传递（<code>add(b=5, a=3)</code>，顺序无关）</li>
+                <li><strong>默认参数</strong>：定义时给参数默认值（<code>def greet(name="Guest"):</code>）</li>
+                <li><strong>可变参数</strong>：<code>*args</code>（接收多个位置参数，打包成元组）、<code>**kwargs</code>（接收多个关键字参数，打包成字典）</li>
+            </ul>
+
+            <h4>示例：函数参数</h4>
+            <div class="code-block">
+<span class="comment"># 默认参数</span>
+<span class="keyword">def</span> <span class="function">greet</span>(name=<span class="string">"Guest"</span>):
+    <span class="builtin">print</span>(<span class="string">f"Hello, {name}!"</span>)
+
+greet()  <span class="comment"># Hello, Guest!</span>
+greet(<span class="string">"Tom"</span>)  <span class="comment"># Hello, Tom!</span>
+
+<span class="comment"># 可变参数 *args</span>
+<span class="keyword">def</span> <span class="function">sum_all</span>(*args):
+    <span class="keyword">return</span> <span class="builtin">sum</span>(args)
+
+<span class="builtin">print</span>(sum_all(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))  <span class="comment"># 6</span>
+<span class="builtin">print</span>(sum_all(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))  <span class="comment"># 15</span>
+
+<span class="comment"># 关键字参数 **kwargs</span>
+<span class="keyword">def</span> <span class="function">print_info</span>(**kwargs):
+    <span class="keyword">for</span> key, value <span class="keyword">in</span> kwargs.items():
+        <span class="builtin">print</span>(<span class="string">f"{key}: {value}"</span>)
+
+print_info(name=<span class="string">"Tom"</span>, age=<span class="number">18</span>, city=<span class="string">"Beijing"</span>)
+            </div>
+
+            <h3>3. 匿名函数（lambda）</h3>
+            <ul>
+                <li><strong>简化单行函数定义</strong>：<code>lambda 参数: 表达式</code>（返回表达式结果）</li>
+                <li><strong>常用场景</strong>：配合<code>map</code>/<code>filter</code>等函数</li>
+            </ul>
+
+            <h4>示例：lambda函数</h4>
+            <div class="code-block">
+<span class="comment"># lambda函数</span>
+add = <span class="keyword">lambda</span> a, b: a + b
+<span class="builtin">print</span>(add(<span class="number">3</span>, <span class="number">5</span>))  <span class="comment"># 8</span>
+
+<span class="comment"># 配合map使用</span>
+nums = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]
+squared = <span class="builtin">list</span>(<span class="builtin">map</span>(<span class="keyword">lambda</span> x: x ** <span class="number">2</span>, nums))
+<span class="builtin">print</span>(squared)  <span class="comment"># [1, 4, 9, 16, 25]</span>
+            </div>
+
+            <h3>4. 模块与包</h3>
+            <ul>
+                <li><strong>模块</strong>：一个<code>.py</code>文件，用<code>import math</code>导入</li>
+                <li><strong>包</strong>：多个模块组成的文件夹（需含<code>__init__.py</code>）</li>
+                <li><strong>常用标准库</strong>：<code>math</code>（数学运算）、<code>random</code>（随机数）、<code>datetime</code>（时间处理）</li>
+            </ul>
+
+            <h4>示例：模块使用</h4>
+            <div class="code-block">
+<span class="comment"># 导入模块</span>
+<span class="keyword">import</span> math
+<span class="keyword">import</span> random
+<span class="keyword">from</span> datetime <span class="keyword">import</span> datetime
+
+<span class="comment"># 使用模块</span>
+<span class="builtin">print</span>(math.sqrt(<span class="number">16</span>))  <span class="comment"># 4.0（开平方）</span>
+<span class="builtin">print</span>(random.randint(<span class="number">1</span>, <span class="number">10</span>))  <span class="comment"># 随机数1-10</span>
+<span class="builtin">print</span>(datetime.now())  <span class="comment"># 当前时间</span>
+            </div>
+        </div>
+
+        <!-- 五、面向对象编程 -->
+        <div class="section">
+            <h2>五、面向对象编程（OOP）</h2>
+            
+            <h3>1. 类与对象</h3>
+            <ul>
+                <li><strong>类</strong>：用<code>class</code>定义的模板（属性+方法）</li>
+                <li><strong>对象</strong>：类的实例，直接创建（<code>dog1 = Dog("旺财", 3)</code>）</li>
+                <li><strong>初始化方法</strong>：<code>__init__</code>（创建对象时自动调用）</li>
+            </ul>
+
+            <h4>示例：类与对象</h4>
+            <div class="code-block">
+<span class="comment"># 定义Dog类</span>
+<span class="keyword">class</span> <span class="class">Dog</span>:
+    <span class="comment"># 类属性（所有对象共享）</span>
+    species = <span class="string">"哺乳动物"</span>
+    
+    <span class="comment"># 初始化方法（创建对象时自动调用）</span>
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>, name, age):
+        <span class="keyword">self</span>.name = name  <span class="comment"># 实例属性（每个对象独有）</span>
+        <span class="keyword">self</span>.age = age
+    
+    <span class="comment"># 实例方法（第一个参数必须是self，指代对象本身）</span>
+    <span class="keyword">def</span> <span class="function">bark</span>(<span class="keyword">self</span>):
+        <span class="builtin">print</span>(<span class="string">f"{self.name}在叫：汪汪！"</span>)
+
+<span class="comment"># 创建对象</span>
+dog1 = <span class="class">Dog</span>(<span class="string">"旺财"</span>, <span class="number">3</span>)
+dog1.bark()  <span class="comment"># 调用方法</span>
+<span class="builtin">print</span>(dog1.name)  <span class="comment"># 访问属性</span>
+            </div>
+
+            <h3>2. 继承</h3>
+            <ul>
+                <li><strong>子类继承父类</strong>：用<code>class 子类(父类):</code>定义</li>
+                <li><strong>调用父类方法</strong>：<code>super().bark()</code>（在子类方法中使用）</li>
+            </ul>
+
+            <h4>示例：继承</h4>
+            <div class="code-block">
+<span class="comment"># 父类</span>
+<span class="keyword">class</span> <span class="class">Dog</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="keyword">self</span>, name, age):
+        <span class="keyword">self</span>.name = name
+        <span class="keyword">self</span>.age = age
+    
+    <span class="keyword">def</span> <span class="function">bark</span>(<span class="keyword">self</span>):
+        <span class="builtin">print</span>(<span class="string">f"{self.name}在叫：汪汪！"</span>)
+
+<span class="comment"># 子类（继承Dog类）</span>
+<span class="keyword">class</span> <span class="class">Husky</span>(<span class="class">Dog</span>):
+    <span class="keyword">def</span> <span class="function">run</span>(<span class="keyword">self</span>):  <span class="comment"># 新增方法</span>
+        <span class="builtin">print</span>(<span class="string">f"{self.name}在奔跑"</span>)
+    
+    <span class="keyword">def</span> <span class="function">bark</span>(<span class="keyword">self</span>):  <span class="comment"># 重写父类方法</span>
+        <span class="builtin">print</span>(<span class="string">f"{self.name}在叫：嗷嗷！"</span>)
+
+<span class="comment"># 使用</span>
+husky = <span class="class">Husky</span>(<span class="string">"哈士奇"</span>, <span class="number">2</span>)
+husky.bark()  <span class="comment"># 执行重写的方法</span>
+husky.run()  <span class="comment"># 调用新增方法</span>
+            </div>
+        </div>
+
+        <!-- 六、文件操作与异常处理 -->
+        <div class="section">
+            <h2>六、文件操作与异常处理</h2>
+            
+            <h3>1. 文件读写</h3>
+            <ul>
+                <li><strong>基本流程</strong>：打开→操作→关闭（推荐用<code>with</code>语句自动关闭）</li>
+                <li><strong>文本文件读写</strong>：<code>'w'</code>模式（覆盖写入）、<code>'a'</code>模式（追加）、<code>'r'</code>模式（读）</li>
+            </ul>
+
+            <h4>示例：文件读写</h4>
+            <div class="code-block">
+<span class="comment"># 写文件（'w'模式：覆盖写入；'a'模式：追加）</span>
+<span class="keyword">with</span> <span class="builtin">open</span>(<span class="string">"test.txt"</span>, <span class="string">"w"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:
+    f.write(<span class="string">"Hello, Python!\n"</span>)  <span class="comment"># 写入一行</span>
+    f.writelines([<span class="string">"第一行\n"</span>, <span class="string">"第二行\n"</span>])  <span class="comment"># 写入多行</span>
+
+<span class="comment"># 读文件（'r'模式）</span>
+<span class="keyword">with</span> <span class="builtin">open</span>(<span class="string">"test.txt"</span>, <span class="string">"r"</span>, encoding=<span class="string">"utf-8"</span>) <span class="keyword">as</span> f:
+    content = f.read()  <span class="comment"># 读全部内容</span>
+    <span class="builtin">print</span>(content)
+    
+    <span class="comment"># 或者逐行读取</span>
+    f.seek(<span class="number">0</span>)  <span class="comment"># 回到文件开头</span>
+    <span class="keyword">for</span> line <span class="keyword">in</span> f:
+        <span class="builtin">print</span>(line.strip())  <span class="comment"># strip()去除换行符</span>
+            </div>
+
+            <h3>2. 异常处理</h3>
+            <ul>
+                <li><strong>捕获异常</strong>：<code>try-except-else-finally</code></li>
+                <li><strong>自定义异常</strong>：继承<code>Exception</code>类，用<code>raise</code>抛出</li>
+            </ul>
+
+            <h4>示例：异常处理</h4>
+            <div class="code-block">
+<span class="keyword">try</span>:
+    num = <span class="builtin">int</span>(<span class="builtin">input</span>(<span class="string">"请输入数字："</span>))
+    result = <span class="number">10</span> / num
+    <span class="builtin">print</span>(result)
+<span class="keyword">except</span> <span class="class">ZeroDivisionError</span>:  <span class="comment"># 捕获除数为0的异常</span>
+    <span class="builtin">print</span>(<span class="string">"不能除以0"</span>)
+<span class="keyword">except</span> <span class="class">ValueError</span>:  <span class="comment"># 捕获输入非数字的异常</span>
+    <span class="builtin">print</span>(<span class="string">"请输入有效数字"</span>)
+<span class="keyword">else</span>:  <span class="comment"># 无异常时执行</span>
+    <span class="builtin">print</span>(<span class="string">"计算完成"</span>)
+<span class="keyword">finally</span>:  <span class="comment"># 无论是否异常都执行</span>
+    <span class="builtin">print</span>(<span class="string">"程序结束"</span>)
+            </div>
+        </div>
+
+        <!-- 七、进阶与实战 -->
+        <div class="section">
+            <h2>七、进阶与实战</h2>
+            
+            <h3>1. 进阶特性</h3>
+            <ul>
+                <li><strong>列表推导式</strong>：一行生成列表（<code>[i*2 for i in range(5)]</code>结果<code>[0,2,4,6,8]</code>）</li>
+                <li><strong>生成器（yield）</strong>：延迟生成数据，节省内存</li>
+                <li><strong>装饰器</strong>：在不修改原函数的前提下扩展功能（如日志记录、计时）</li>
+                <li><strong>第三方库</strong>：用<code>pip install 库名</code>安装（如<code>requests</code>、<code>pandas</code>、<code>BeautifulSoup</code>）</li>
+            </ul>
+
+            <h4>示例：列表推导式</h4>
+            <div class="code-block">
+<span class="comment"># 列表推导式：一行生成列表</span>
+squared = [i ** <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">5</span>)]
+<span class="builtin">print</span>(squared)  <span class="comment"># [0, 1, 4, 9, 16]</span>
+
+<span class="comment"># 带条件的列表推导式</span>
+evens = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="builtin">range</span>(<span class="number">10</span>) <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>]
+<span class="builtin">print</span>(evens)  <span class="comment"># [0, 2, 4, 6, 8]</span>
+            </div>
+
+            <h3>2. 实战项目</h3>
+            <ul>
+                <li><strong>基础</strong>：猜数字游戏、简易通讯录（用字典存储，支持增删查改）</li>
+                <li><strong>进阶</strong>：爬虫（爬取网页标题/图片）、数据分析（用<code>pandas</code>读取CSV文件）、自动化脚本（批量重命名文件）</li>
+            </ul>
+
+            <h4>示例：猜数字游戏</h4>
+            <div class="code-block">
+<span class="keyword">import</span> random
+
+<span class="comment"># 生成1-100的随机数</span>
+target = random.randint(<span class="number">1</span>, <span class="number">100</span>)
+count = <span class="number">0</span>
+
+<span class="builtin">print</span>(<span class="string">"欢迎来到猜数字游戏！"</span>)
+<span class="builtin">print</span>(<span class="string">"我已经想好了一个1-100之间的数字，请猜猜看："</span>)
+
+<span class="keyword">while</span> <span class="keyword">True</span>:
+    guess = <span class="builtin">int</span>(<span class="builtin">input</span>(<span class="string">"请输入你的猜测: "</span>))
+    count += <span class="number">1</span>
+    
+    <span class="keyword">if</span> guess &gt; target:
+        <span class="builtin">print</span>(<span class="string">"太大了！"</span>)
+    <span class="keyword">elif</span> guess &lt; target:
+        <span class="builtin">print</span>(<span class="string">"太小了！"</span>)
+    <span class="keyword">else</span>:
+        <span class="builtin">print</span>(<span class="string">f"恭喜你猜对了！用了{count}次"</span>)
+        <span class="keyword">break</span>
+            </div>
+        </div>
+
+        <!-- 八、常见问题与调试 -->
+        <div class="section">
+            <h2>八、常见问题与调试</h2>
+            <div class="tip">
+                <strong>💡 调试技巧：</strong>
+                <ul>
+                    <li><strong>缩进错误</strong>：Python用缩进区分代码块，缩进不一致会报错（建议用4个空格）</li>
+                    <li><strong>变量未定义</strong>：使用前需赋值（<code>print(x)</code>若x未定义会报<code>NameError</code>）</li>
+                    <li><strong>索引越界</strong>：<code>list[5]</code>若列表长度为3会报<code>IndexError</code></li>
+                    <li><strong>调试技巧</strong>：用<code>print()</code>打印变量，PyCharm断点调试（查看变量值、单步执行）</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav-footer" style="text-align: center; margin-top: 50px; padding: 30px;">
+            <a href="java.html" style="color: #4facfe; text-decoration: none; padding: 10px 20px; background: #f0f0f0; border-radius: 5px; margin: 0 10px;">← 上一节：Java</a>
+            <a href="index.html" style="color: #4facfe; text-decoration: none; padding: 10px 20px; background: #f0f0f0; border-radius: 5px; margin: 0 10px;">返回首页</a>
+            <a href="frontend.html" style="color: #4facfe; text-decoration: none; padding: 10px 20px; background: #f0f0f0; border-radius: 5px; margin: 0 10px;">下一节：前端 →</a>
+        </div>
+    </div>
+</body>
+</html>
+

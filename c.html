@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C语言学习 - 编程学习辅助平台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .nav {
+            background: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .nav a:hover {
+            background: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        .section {
+            background: white;
+            margin-bottom: 30px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .section h3 {
+            color: #555;
+            font-size: 1.4em;
+            margin: 25px 0 15px 0;
+        }
+
+        .section h4 {
+            color: #777;
+            font-size: 1.2em;
+            margin: 20px 0 10px 0;
+        }
+
+        .section ul, .section ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #282c34;
+            color: #abb2bf;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        .code-block .keyword { color: #c678dd; }
+        .code-block .string { color: #98c379; }
+        .code-block .comment { color: #5c6370; font-style: italic; }
+        .code-block .function { color: #61afef; }
+        .code-block .number { color: #d19a66; }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .tip {
+            background: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip strong {
+            color: #0c5460;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav {
+                text-align: center;
+            }
+
+            .nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📘 C语言学习指南</h1>
+        <p>系统编程的基础语言，理解内存、指针和程序执行逻辑</p>
+    </div>
+
+    <div class="nav">
+        <a href="index.html">🏠 首页</a>
+        <a href="java.html">☕ Java</a>
+        <a href="python.html">🐍 Python</a>
+        <a href="frontend.html">🌐 前端</a>
+        <a href="agent.html">🤖 智能体</a>
+    </div>
+
+    <div class="container">
+        <!-- 一、C语言入门基础 -->
+        <div class="section">
+            <h2>一、C语言入门基础</h2>
+            
+            <h3>1. C语言初识</h3>
+            <ul>
+                <li><strong>起源与发展</strong>：贝尔实验室、K&R标准、C99/C11标准简介</li>
+                <li><strong>特点与应用场景</strong>：系统开发、嵌入式、底层驱动等</li>
+                <li><strong>为什么学C</strong>：对理解内存、指针、程序执行逻辑的重要性</li>
+            </ul>
+
+            <h3>2. 开发环境搭建</h3>
+            <ul>
+                <li><strong>编译器选择</strong>：GCC、MinGW、Visual Studio、Dev-C++</li>
+                <li><strong>环境安装与配置</strong>：以GCC为例（Windows/Linux/macOS安装步骤）</li>
+                <li><strong>第一个C程序</strong>：Hello World（代码结构解析）</li>
+            </ul>
+
+            <h4>示例：Hello World</h4>
+            <div class="code-block">
+<span class="comment">// 包含标准输入输出头文件</span>
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="comment">// main函数是程序的入口点</span>
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="function">printf</span>(<span class="string">"Hello, World!\n"</span>);  <span class="comment">// 输出文本，\n表示换行</span>
+    <span class="keyword">return</span> <span class="number">0</span>;  <span class="comment">// 返回0表示程序正常结束</span>
+}
+            </div>
+        </div>
+
+        <!-- 二、核心语法 -->
+        <div class="section">
+            <h2>二、核心语法：变量、运算与控制流</h2>
+            
+            <h3>1. 变量与数据类型</h3>
+            <ul>
+                <li><strong>基本数据类型</strong>：<code>int</code>（整数）、<code>char</code>（字符）、<code>float</code>/<code>double</code>（浮点数）</li>
+                <li><strong>常量</strong>：字面常量（<code>10</code>、<code>'a'</code>）、<code>const</code>修饰的只读变量</li>
+                <li><strong>变量定义与初始化</strong>：<code>int a = 5; char c = 'A';</code></li>
+                <li><strong>数据类型转换</strong>：隐式转换（<code>int + float</code>）与显式转换（<code>(int)3.14</code>）</li>
+            </ul>
+
+            <h4>示例：变量与数据类型</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// 整数类型</span>
+    <span class="keyword">int</span> age = <span class="number">18</span>;
+    <span class="keyword">long</span> <span class="keyword">long</span> big_num = <span class="number">1234567890</span>;
+    
+    <span class="comment">// 字符类型</span>
+    <span class="keyword">char</span> grade = <span class="string">'A'</span>;
+    
+    <span class="comment">// 浮点数类型</span>
+    <span class="keyword">float</span> price = <span class="number">99.99</span>;
+    <span class="keyword">double</span> pi = <span class="number">3.1415926</span>;
+    
+    <span class="comment">// 常量</span>
+    <span class="keyword">const</span> <span class="keyword">int</span> MAX_SIZE = <span class="number">100</span>;
+    
+    <span class="function">printf</span>(<span class="string">"年龄: %d, 成绩: %c, 价格: %.2f\n"</span>, age, grade, price);
+    
+    <span class="comment">// 类型转换</span>
+    <span class="keyword">int</span> result = (<span class="keyword">int</span>)pi;  <span class="comment">// 强制转换为整数</span>
+    <span class="function">printf</span>(<span class="string">"pi的整数部分: %d\n"</span>, result);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+
+            <h3>2. 运算符与表达式</h3>
+            <ul>
+                <li><strong>算术运算符</strong>：<code>+ - * / %</code>（注意<code>/</code>整数除法特性：<code>5/2=2</code>）</li>
+                <li><strong>赋值与复合赋值</strong>：<code>= += -= *= /= %=</code></li>
+                <li><strong>比较运算符</strong>：<code>&gt; &lt; &gt;= &lt;= == !=</code></li>
+                <li><strong>逻辑运算符</strong>：<code>&& || !</code>（短路特性）</li>
+                <li><strong>三目运算符</strong>：<code>int max = (a&gt;b)?a:b;</code></li>
+            </ul>
+
+            <h4>示例：运算符使用</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> a = <span class="number">10</span>, b = <span class="number">3</span>;
+    
+    <span class="comment">// 算术运算</span>
+    <span class="function">printf</span>(<span class="string">"%d + %d = %d\n"</span>, a, b, a + b);
+    <span class="function">printf</span>(<span class="string">"%d / %d = %d\n"</span>, a, b, a / b);  <span class="comment">// 整数除法，结果为3</span>
+    <span class="function">printf</span>(<span class="string">"%d %% %d = %d\n"</span>, a, b, a % b);  <span class="comment">// 取余，结果为1</span>
+    
+    <span class="comment">// 复合赋值</span>
+    a += <span class="number">5</span>;  <span class="comment">// 等价于 a = a + 5</span>
+    <span class="function">printf</span>(<span class="string">"a += 5 后，a = %d\n"</span>, a);
+    
+    <span class="comment">// 逻辑运算</span>
+    <span class="keyword">int</span> x = <span class="number">5</span>, y = <span class="number">10</span>;
+    <span class="function">printf</span>(<span class="string">"x &gt; 0 && y &gt; 0: %d\n"</span>, x &gt; <span class="number">0</span> && y &gt; <span class="number">0</span>);
+    
+    <span class="comment">// 三目运算符</span>
+    <span class="keyword">int</span> max = (x &gt; y) ? x : y;
+    <span class="function">printf</span>(<span class="string">"max(%d, %d) = %d\n"</span>, x, y, max);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+
+            <h3>3. 控制流语句</h3>
+            <ul>
+                <li><strong>分支结构</strong>：<code>if-else</code>、<code>switch-case</code></li>
+                <li><strong>循环结构</strong>：<code>for</code>、<code>while</code>、<code>do-while</code></li>
+                <li><strong>循环控制</strong>：<code>break</code>（跳出循环）、<code>continue</code>（跳过本次循环）</li>
+            </ul>
+
+            <h4>示例：控制流语句</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// if-else 分支</span>
+    <span class="keyword">int</span> score = <span class="number">85</span>;
+    <span class="keyword">if</span> (score &gt;= <span class="number">90</span>) {
+        <span class="function">printf</span>(<span class="string">"优秀\n"</span>);
+    } <span class="keyword">else</span> <span class="keyword">if</span> (score &gt;= <span class="number">60</span>) {
+        <span class="function">printf</span>(<span class="string">"及格\n"</span>);
+    } <span class="keyword">else</span> {
+        <span class="function">printf</span>(<span class="string">"不及格\n"</span>);
+    }
+    
+    <span class="comment">// switch-case</span>
+    <span class="keyword">int</span> day = <span class="number">3</span>;
+    <span class="keyword">switch</span> (day) {
+        <span class="keyword">case</span> <span class="number">1</span>: <span class="function">printf</span>(<span class="string">"星期一\n"</span>); <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">2</span>: <span class="function">printf</span>(<span class="string">"星期二\n"</span>); <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">3</span>: <span class="function">printf</span>(<span class="string">"星期三\n"</span>); <span class="keyword">break</span>;
+        <span class="keyword">default</span>: <span class="function">printf</span>(<span class="string">"其他\n"</span>);
+    }
+    
+    <span class="comment">// for循环：计算1-100求和</span>
+    <span class="keyword">int</span> sum = <span class="number">0</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) {
+        sum += i;
+    }
+    <span class="function">printf</span>(<span class="string">"1-100的和: %d\n"</span>, sum);
+    
+    <span class="comment">// while循环</span>
+    <span class="keyword">int</span> count = <span class="number">0</span>;
+    <span class="keyword">while</span> (count &lt; <span class="number">5</span>) {
+        <span class="function">printf</span>(<span class="string">"count = %d\n"</span>, count);
+        count++;
+    }
+    
+    <span class="comment">// do-while循环（至少执行一次）</span>
+    <span class="keyword">int</span> num = <span class="number">10</span>;
+    <span class="keyword">do</span> {
+        <span class="function">printf</span>(<span class="string">"num = %d\n"</span>, num);
+        num++;
+    } <span class="keyword">while</span> (num &lt; <span class="number">5</span>);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+        </div>
+
+        <!-- 三、数组与字符串 -->
+        <div class="section">
+            <h2>三、数组与字符串</h2>
+            
+            <h3>1. 数组</h3>
+            <ul>
+                <li><strong>一维数组</strong>：定义（<code>int arr[5];</code>）、初始化（<code>int arr[] = {1,2,3};</code>）、访问（<code>arr[0]</code>）</li>
+                <li><strong>数组长度计算</strong>：<code>sizeof(arr)/sizeof(arr[0])</code></li>
+                <li><strong>二维数组</strong>：定义（<code>int matrix[2][3];</code>）、初始化与遍历</li>
+                <li><strong>数组应用</strong>：冒泡排序、选择排序</li>
+            </ul>
+
+            <h4>示例：数组操作</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// 一维数组</span>
+    <span class="keyword">int</span> arr[<span class="number">5</span>] = {<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>};
+    <span class="keyword">int</span> len = <span class="keyword">sizeof</span>(arr) / <span class="keyword">sizeof</span>(arr[<span class="number">0</span>]);
+    <span class="function">printf</span>(<span class="string">"数组长度: %d\n"</span>, len);
+    
+    <span class="comment">// 遍历数组</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) {
+        <span class="function">printf</span>(<span class="string">"arr[%d] = %d\n"</span>, i, arr[i]);
+    }
+    
+    <span class="comment">// 二维数组</span>
+    <span class="keyword">int</span> matrix[<span class="number">2</span>][<span class="number">3</span>] = {{<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>}, {<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>}};
+    <span class="function">printf</span>(<span class="string">"\n二维数组:\n"</span>);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">3</span>; j++) {
+            <span class="function">printf</span>(<span class="string">"%d "</span>, matrix[i][j]);
+        }
+        <span class="function">printf</span>(<span class="string">"\n"</span>);
+    }
+    
+    <span class="comment">// 冒泡排序</span>
+    <span class="keyword">int</span> nums[<span class="number">5</span>] = {<span class="number">5</span>, <span class="number">2</span>, <span class="number">8</span>, <span class="number">1</span>, <span class="number">9</span>};
+    <span class="keyword">int</span> n = <span class="number">5</span>;
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) {
+        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n - <span class="number">1</span> - i; j++) {
+            <span class="keyword">if</span> (nums[j] &gt; nums[j + <span class="number">1</span>]) {
+                <span class="keyword">int</span> temp = nums[j];
+                nums[j] = nums[j + <span class="number">1</span>];
+                nums[j + <span class="number">1</span>] = temp;
+            }
+        }
+    }
+    <span class="function">printf</span>(<span class="string">"\n排序后: "</span>);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        <span class="function">printf</span>(<span class="string">"%d "</span>, nums[i]);
+    }
+    <span class="function">printf</span>(<span class="string">"\n"</span>);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+
+            <h3>2. 字符串</h3>
+            <ul>
+                <li><strong>字符串本质</strong>：以<code>'\0'</code>结尾的字符数组</li>
+                <li><strong>字符串处理函数</strong>（需包含<code>string.h</code>）：<code>strlen</code>、<code>strcpy</code>、<code>strcat</code>、<code>strcmp</code></li>
+            </ul>
+
+            <h4>示例：字符串操作</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+<span class="keyword">#include</span> &lt;string.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// 字符串定义（自动添加'\0'）</span>
+    <span class="keyword">char</span> str[] = <span class="string">"hello"</span>;  <span class="comment">// 等价于 {'h','e','l','l','o','\0'}</span>
+    
+    <span class="comment">// strlen: 计算长度（不含'\0'）</span>
+    <span class="function">printf</span>(<span class="string">"str长度: %zu\n"</span>, <span class="function">strlen</span>(str));
+    
+    <span class="comment">// strcpy: 复制字符串</span>
+    <span class="keyword">char</span> dest[<span class="number">20</span>];
+    <span class="function">strcpy</span>(dest, str);
+    <span class="function">printf</span>(<span class="string">"复制后: %s\n"</span>, dest);
+    
+    <span class="comment">// strcat: 拼接字符串</span>
+    <span class="function">strcat</span>(dest, <span class="string">" world"</span>);
+    <span class="function">printf</span>(<span class="string">"拼接后: %s\n"</span>, dest);
+    
+    <span class="comment">// strcmp: 比较字符串（返回0表示相等）</span>
+    <span class="keyword">char</span> str1[] = <span class="string">"abc"</span>;
+    <span class="keyword">char</span> str2[] = <span class="string">"abc"</span>;
+    <span class="keyword">if</span> (<span class="function">strcmp</span>(str1, str2) == <span class="number">0</span>) {
+        <span class="function">printf</span>(<span class="string">"str1 和 str2 相等\n"</span>);
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+        </div>
+
+        <!-- 四、函数与模块化编程 -->
+        <div class="section">
+            <h2>四、函数与模块化编程</h2>
+            
+            <h3>1. 函数基础</h3>
+            <ul>
+                <li><strong>函数定义</strong>：<code>返回类型 函数名(参数列表) { 函数体 }</code></li>
+                <li><strong>函数声明</strong>：解决函数调用在前、定义在后的问题</li>
+                <li><strong>函数调用</strong>：传参（实参→形参，值传递特性）</li>
+            </ul>
+
+            <h4>示例：函数定义与调用</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="comment">// 函数声明</span>
+<span class="keyword">int</span> <span class="function">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b);
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> result = <span class="function">add</span>(<span class="number">3</span>, <span class="number">5</span>);  <span class="comment">// 函数调用</span>
+    <span class="function">printf</span>(<span class="string">"3 + 5 = %d\n"</span>, result);
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+
+<span class="comment">// 函数定义</span>
+<span class="keyword">int</span> <span class="function">add</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) {  <span class="comment">// a、b是形参</span>
+    <span class="keyword">return</span> a + b;  <span class="comment">// 返回值</span>
+}
+            </div>
+
+            <h3>2. 函数进阶</h3>
+            <ul>
+                <li><strong>递归函数</strong>：函数自身调用（示例：计算n的阶乘）</li>
+                <li><strong>变量作用域</strong>：局部变量（函数内）、全局变量（函数外）</li>
+                <li><strong>存储类别</strong>：<code>static</code>（延长生命周期）</li>
+            </ul>
+
+            <h4>示例：递归函数（计算阶乘）</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="comment">// 递归函数：计算n的阶乘</span>
+<span class="keyword">int</span> <span class="function">factorial</span>(<span class="keyword">int</span> n) {
+    <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>) {
+        <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">// 递归终止条件</span>
+    }
+    <span class="keyword">return</span> n * <span class="function">factorial</span>(n - <span class="number">1</span>);  <span class="comment">// 递归调用</span>
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> n = <span class="number">5</span>;
+    <span class="function">printf</span>(<span class="string">"%d! = %d\n"</span>, n, <span class="function">factorial</span>(n));
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+        </div>
+
+        <!-- 五、指针 -->
+        <div class="section">
+            <h2>五、指针（C语言核心难点）</h2>
+            
+            <h3>1. 指针基础</h3>
+            <ul>
+                <li><strong>指针概念</strong>：变量的地址（<code>&</code>取地址符），指针变量（存储地址的变量）</li>
+                <li><strong>定义与使用</strong>：<code>int a = 10; int *p = &a;</code></li>
+                <li><strong>通过指针修改变量值</strong>：<code>*p = 20;</code> 等价于 <code>a = 20;</code></li>
+            </ul>
+
+            <h4>示例：指针基础</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> a = <span class="number">10</span>;
+    <span class="keyword">int</span> *p = &a;  <span class="comment">// p是指针变量，存储a的地址</span>
+    
+    <span class="function">printf</span>(<span class="string">"a的值: %d\n"</span>, a);
+    <span class="function">printf</span>(<span class="string">"a的地址: %p\n"</span>, &a);
+    <span class="function">printf</span>(<span class="string">"p存储的地址: %p\n"</span>, p);
+    <span class="function">printf</span>(<span class="string">"p指向的值: %d\n"</span>, *p);  <span class="comment">// *p表示指针指向的变量</span>
+    
+    <span class="comment">// 通过指针修改变量值</span>
+    *p = <span class="number">20</span>;  <span class="comment">// 等价于 a = 20;</span>
+    <span class="function">printf</span>(<span class="string">"修改后a的值: %d\n"</span>, a);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+
+            <h3>2. 指针与数组</h3>
+            <ul>
+                <li><strong>数组名本质</strong>：数组首元素地址（<code>arr</code> 等价于 <code>&arr[0]</code>）</li>
+                <li><strong>指针访问数组</strong>：<code>*(arr+i)</code> 等价于 <code>arr[i]</code></li>
+            </ul>
+
+            <h4>示例：指针与数组</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> arr[<span class="number">5</span>] = {<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>};
+    <span class="keyword">int</span> *p = arr;  <span class="comment">// arr是数组首元素地址</span>
+    
+    <span class="function">printf</span>(<span class="string">"用指针遍历数组:\n"</span>);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) {
+        <span class="function">printf</span>(<span class="string">"arr[%d] = %d (用指针: %d)\n"</span>, i, arr[i], *(p + i));
+    }
+    
+    <span class="comment">// 指针运算</span>
+    p++;  <span class="comment">// 指向下一个元素</span>
+    <span class="function">printf</span>(<span class="string">"\n指针后移后指向: %d\n"</span>, *p);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+
+            <h3>3. 指针与函数（传址调用）</h3>
+            <h4>示例：交换两个变量的值</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="comment">// 错误示例：值传递（无法交换）</span>
+<span class="keyword">void</span> <span class="function">swap_wrong</span>(<span class="keyword">int</span> a, <span class="keyword">int</span> b) {
+    <span class="keyword">int</span> temp = a;
+    a = b;
+    b = temp;
+}
+
+<span class="comment">// 正确示例：指针传递（传址调用）</span>
+<span class="keyword">void</span> <span class="function">swap</span>(<span class="keyword">int</span> *a, <span class="keyword">int</span> *b) {
+    <span class="keyword">int</span> temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="keyword">int</span> x = <span class="number">10</span>, y = <span class="number">20</span>;
+    <span class="function">printf</span>(<span class="string">"交换前: x = %d, y = %d\n"</span>, x, y);
+    
+    <span class="function">swap</span>(&x, &y);  <span class="comment">// 传递地址</span>
+    <span class="function">printf</span>(<span class="string">"交换后: x = %d, y = %d\n"</span>, x, y);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+        </div>
+
+        <!-- 六、结构体与文件操作 -->
+        <div class="section">
+            <h2>六、结构体与文件操作</h2>
+            
+            <h3>1. 结构体</h3>
+            <ul>
+                <li><strong>定义</strong>：<code>struct 结构体名 { 成员列表 };</code></li>
+                <li><strong>结构体变量</strong>：定义、初始化、成员访问（<code>.</code>运算符）</li>
+                <li><strong>结构体指针</strong>：<code>-&gt;</code>运算符访问成员</li>
+            </ul>
+
+            <h4>示例：结构体使用</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+<span class="keyword">#include</span> &lt;string.h&gt;
+
+<span class="comment">// 定义结构体</span>
+<span class="keyword">struct</span> Student {
+    <span class="keyword">char</span> name[<span class="number">20</span>];
+    <span class="keyword">int</span> age;
+    <span class="keyword">float</span> score;
+};
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// 结构体变量初始化</span>
+    <span class="keyword">struct</span> Student s = {<span class="string">"Tom"</span>, <span class="number">18</span>, <span class="number">90.5</span>};
+    
+    <span class="comment">// 访问成员（.运算符）</span>
+    <span class="function">printf</span>(<span class="string">"姓名: %s, 年龄: %d, 成绩: %.1f\n"</span>, s.name, s.age, s.score);
+    
+    <span class="comment">// 结构体指针</span>
+    <span class="keyword">struct</span> Student *p = &s;
+    <span class="function">printf</span>(<span class="string">"用指针访问: %s, %d岁\n"</span>, p-&gt;name, p-&gt;age);  <span class="comment">// -&gt;运算符</span>
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+
+            <h3>2. 文件操作</h3>
+            <ul>
+                <li><strong>文件指针</strong>：<code>FILE *fp;</code></li>
+                <li><strong>打开与关闭</strong>：<code>fopen</code>（打开模式：<code>r</code>读、<code>w</code>写、<code>a</code>追加）、<code>fclose</code></li>
+                <li><strong>读写操作</strong>：<code>fscanf</code>、<code>fprintf</code>（文本文件）</li>
+            </ul>
+
+            <h4>示例：文件读写</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// 写文件</span>
+    FILE *fp = <span class="function">fopen</span>(<span class="string">"test.txt"</span>, <span class="string">"w"</span>);
+    <span class="keyword">if</span> (fp != NULL) {
+        <span class="function">fprintf</span>(fp, <span class="string">"Hello, C语言!\n"</span>);
+        <span class="function">fprintf</span>(fp, <span class="string">"这是文件操作示例\n"</span>);
+        <span class="function">fclose</span>(fp);
+        <span class="function">printf</span>(<span class="string">"文件写入成功\n"</span>);
+    }
+    
+    <span class="comment">// 读文件</span>
+    fp = <span class="function">fopen</span>(<span class="string">"test.txt"</span>, <span class="string">"r"</span>);
+    <span class="keyword">if</span> (fp != NULL) {
+        <span class="keyword">char</span> buffer[<span class="number">100</span>];
+        <span class="function">printf</span>(<span class="string">"文件内容:\n"</span>);
+        <span class="keyword">while</span> (<span class="function">fgets</span>(buffer, <span class="keyword">sizeof</span>(buffer), fp) != NULL) {
+            <span class="function">printf</span>(<span class="string">"%s"</span>, buffer);
+        }
+        <span class="function">fclose</span>(fp);
+    }
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+        </div>
+
+        <!-- 七、进阶与实战 -->
+        <div class="section">
+            <h2>七、进阶与实战</h2>
+            
+            <h3>1. 预处理命令</h3>
+            <ul>
+                <li><strong>宏定义</strong>：<code>#define PI 3.14</code>、带参数宏（<code>#define MAX(a,b) (a&gt;b?a:b)</code>）</li>
+                <li><strong>文件包含</strong>：<code>#include &lt;stdio.h&gt;</code>（标准库）与 <code>#include "myfile.h"</code>（自定义头文件）</li>
+            </ul>
+
+            <h3>2. 动态内存管理</h3>
+            <ul>
+                <li><strong>malloc</strong>：分配内存（<code>int *p = (int*)malloc(5*sizeof(int));</code>）</li>
+                <li><strong>free</strong>：释放内存（<code>free(p); p = NULL;</code> 避免野指针）</li>
+            </ul>
+
+            <h4>示例：动态内存分配</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+<span class="keyword">#include</span> &lt;stdlib.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="comment">// 动态分配内存</span>
+    <span class="keyword">int</span> n = <span class="number">5</span>;
+    <span class="keyword">int</span> *p = (<span class="keyword">int</span>*)<span class="function">malloc</span>(n * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));
+    
+    <span class="keyword">if</span> (p == NULL) {
+        <span class="function">printf</span>(<span class="string">"内存分配失败\n"</span>);
+        <span class="keyword">return</span> <span class="number">1</span>;
+    }
+    
+    <span class="comment">// 使用内存</span>
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        p[i] = i * <span class="number">10</span>;
+    }
+    
+    <span class="function">printf</span>(<span class="string">"动态数组内容: "</span>);
+    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {
+        <span class="function">printf</span>(<span class="string">"%d "</span>, p[i]);
+    }
+    <span class="function">printf</span>(<span class="string">"\n"</span>);
+    
+    <span class="comment">// 释放内存</span>
+    <span class="function">free</span>(p);
+    p = NULL;  <span class="comment">// 避免野指针</span>
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+
+            <h3>3. 实战项目</h3>
+            <ul>
+                <li><strong>基础</strong>：简易计算器、猜数字游戏</li>
+                <li><strong>进阶</strong>：学生信息管理系统（结构体+文件存储）、贪吃蛇游戏</li>
+            </ul>
+
+            <h4>示例：猜数字游戏</h4>
+            <div class="code-block">
+<span class="keyword">#include</span> &lt;stdio.h&gt;
+<span class="keyword">#include</span> &lt;stdlib.h&gt;
+<span class="keyword">#include</span> &lt;time.h&gt;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+    <span class="function">srand</span>(<span class="function">time</span>(NULL));  <span class="comment">// 初始化随机数种子</span>
+    <span class="keyword">int</span> target = <span class="function">rand</span>() % <span class="number">100</span> + <span class="number">1</span>;  <span class="comment">// 生成1-100的随机数</span>
+    <span class="keyword">int</span> guess, count = <span class="number">0</span>;
+    
+    <span class="function">printf</span>(<span class="string">"欢迎来到猜数字游戏！\n"</span>);
+    <span class="function">printf</span>(<span class="string">"我已经想好了一个1-100之间的数字，请猜猜看：\n"</span>);
+    
+    <span class="keyword">do</span> {
+        <span class="function">printf</span>(<span class="string">"请输入你的猜测: "</span>);
+        <span class="function">scanf</span>(<span class="string">"%d"</span>, &guess);
+        count++;
+        
+        <span class="keyword">if</span> (guess &gt; target) {
+            <span class="function">printf</span>(<span class="string">"太大了！\n"</span>);
+        } <span class="keyword">else</span> <span class="keyword">if</span> (guess &lt; target) {
+            <span class="function">printf</span>(<span class="string">"太小了！\n"</span>);
+        } <span class="keyword">else</span> {
+            <span class="function">printf</span>(<span class="string">"恭喜你猜对了！用了%d次\n"</span>, count);
+        }
+    } <span class="keyword">while</span> (guess != target);
+    
+    <span class="keyword">return</span> <span class="number">0</span>;
+}
+            </div>
+        </div>
+
+        <!-- 八、常见问题与调试 -->
+        <div class="section">
+            <h2>八、常见问题与调试</h2>
+            <div class="tip">
+                <strong>💡 调试技巧：</strong>
+                <ul>
+                    <li><strong>语法错误</strong>：分号遗漏、括号不匹配（编译器报错定位）</li>
+                    <li><strong>逻辑错误</strong>：循环条件错误、数组越界（用<code>printf</code>打印中间变量排查）</li>
+                    <li><strong>内存错误</strong>：野指针、内存泄漏（养成<code>free</code>内存的习惯）</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="nav-footer" style="text-align: center; margin-top: 50px; padding: 30px;">
+            <a href="index.html" style="color: #667eea; text-decoration: none; padding: 10px 20px; background: #f0f0f0; border-radius: 5px; margin: 0 10px;">← 返回首页</a>
+            <a href="java.html" style="color: #667eea; text-decoration: none; padding: 10px 20px; background: #f0f0f0; border-radius: 5px; margin: 0 10px;">下一节：Java →</a>
+        </div>
+    </div>
+</body>
+</html>
+
